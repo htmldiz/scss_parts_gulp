@@ -1,0 +1,11 @@
+@import "../../base/variables";
+@import "./devices/mobile";
+@media(min-width:#{$breakpoint_md}px){
+  @import "./devices/tablet";
+}
+@media(min-width:#{$breakpoint_xl}px){
+  @import "./devices/desktop";
+}
+@media(min-width:#{$breakpoint_wd}px){
+  @import "./devices/large_screen";
+}

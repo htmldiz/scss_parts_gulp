@@ -1,0 +1,23 @@
+$defaulttcolor: #363636;
+$main_font: 'Mallory';
+$cols:12;
+$orders:3;
+$margins:5;
+$breakpoint_xs   : 0;
+$breakpoint_tn   : 320;
+$breakpoint_sm   : 576;
+$breakpoint_md   : 768;
+$breakpoint_lg   : 1024;
+$breakpoint_xl   : 1242;
+$breakpoint_wd   : 1440;
+$breakpoint_xwd  : 1920;
+$grid-breakpoints: (
+        xs   : $breakpoint_xs,
+        tn   : $breakpoint_tn,
+        sm   : $breakpoint_sm,
+        md   : $breakpoint_md,
+        lg   : $breakpoint_lg,
+        xl   : $breakpoint_xl,
+        wd   : $breakpoint_wd,
+        xwd  : $breakpoint_xwd
+);

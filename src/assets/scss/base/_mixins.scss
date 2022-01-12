@@ -1,0 +1,100 @@
+@import "./variables";
+@mixin default_font_reset() {
+  &{
+    color: $defaulttcolor;
+    font-family: $main_font;
+    font-size: 14px;
+    line-height: 22px;
+  }
+}
+@mixin display($device,$width) {
+  $class_name:'d';
+  @if($width > 0){
+    $class_name:#{$class_name}-#{$device};
+  }
+  &.#{$class_name}-block{
+    display: block !important;
+  }
+  &.#{$class_name}-flex{
+    display: flex !important;
+  }
+  &.#{$class_name}-none{
+    display: none !important;
+  }
+}
+@mixin margins-setup($device,$width) {
+  @for $margin from 1 through $margins {
+    $class_name:#{$margin};
+    @if($width > 0){
+      $class_name:#{$device}-#{$margin};
+    }
+    &.m-#{$class_name}{
+      margin:#{$margin}rem !important;
+    }
+    &.me-#{$class_name}{
+      margin-right:#{$margin}rem !important;
+    }
+    &.ms-#{$class_name}{
+      margin-left:#{$margin}rem !important;
+    }
+    &.mt-#{$class_name}{
+      margin-top:#{$margin}rem !important;
+    }
+    &.mb-#{$class_name}{
+      margin-bottom:#{$margin}rem !important;
+    }
+  }
+}
+@mixin order-setup($device,$width) {
+  @for $order from 1 through $orders {
+    $class_name:#{$order};
+    @if($width > 0){
+      $class_name:#{$device}-#{$order};
+    }
+    &.order-#{$class_name}{
+      order:$order;
+    }
+  }
+}
+@mixin cols-setup($device,$width) {
+  @for $col from 1 through $cols {
+    $class_name:#{$col};
+    @if($width > 0){
+      $class_name:#{$device}-#{$col};
+    }
+    &.col-#{$class_name}{
+      padding-left: 15px;
+      padding-right: 15px;
+      max-width: calc(#{$col} * 100% / #{$cols});
+      flex: 0 0 calc(#{$col} * 100% / #{$cols});
+    }
+  }
+}
+@mixin container-setup($device,$width) {
+   .container{
+      padding-left: 15px;
+      padding-right: 15px;
+      max-width: #{$width}px;
+      flex: 0 0 #{$width}px;
+      width: #{$width}px;
+     margin-left: auto;
+     margin-right: auto;
+    }
+}
+@mixin cols($device,$width) {
+  @if($width > 0){
+    @media(min-width:#{$width+1}px){
+      @include container-setup($device,$width);
+      @include cols-setup($device,$width);
+      @include order-setup($device,$width);
+      @include display($device,$width);
+      @include margins-setup($device,$width);
+    }
+  }@else{
+    @include container-setup($device,$width);
+    @include cols-setup($device,$width);
+    @include order-setup($device,$width);
+    @include display($device,$width);
+    @include margins-setup($device,$width);
+  }
+}

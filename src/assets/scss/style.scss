@@ -1,0 +1,48 @@
+// fonts
+@import "base/fonts";
+
+// variables and mixins
+@import "base/variables";
+
+// common styles
+@import "base/common";
+@import "base/mixins";
+
+//pages
+// @import "pages/login";
+
+//components
+html,
+body{
+  margin: 0;
+  padding: 0;
+}
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+.container{
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left:-15px;
+  margin-right:-15px;
+  @media(max-width:1025px){
+    margin-left:0;
+    margin-right:0;
+  }
+}
+
+.col {
+  padding-left: 15px;
+  padding-right: 15px;
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+}
+@each $device, $width in $grid-breakpoints {
+  @include cols($device,$width);
+}
+@import "components/component/component";
